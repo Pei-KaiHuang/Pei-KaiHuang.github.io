@@ -56,38 +56,58 @@
         }
 
         /* =========================================
-           2. Profile
+           2. Profile - Desktop
         ========================================= */
 
         .profile-container {
-            display: flex;
-            align-items: flex-start;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: 150px minmax(0, 1fr);
+            grid-template-areas:
+                "photo main"
+                "photo extra";
+
+            column-gap: 25px;
+            row-gap: 5px;
+
+            align-items: start;
+
+            width: 100%;
             margin-top: 20px;
             margin-bottom: 25px;
-            width: 100%;
+        }
+
+        .profile-photo-wrapper {
+            grid-area: photo;
+            min-width: 0;
         }
 
         .profile-photo {
-            width: 150px;
-            height: auto;
             display: block;
+            width: 150px;
+            max-width: 100%;
+            height: auto;
             border-radius: 5px;
-            flex-shrink: 0;
         }
 
-        .profile-info {
-            flex: 1;
+        .profile-main {
+            grid-area: main;
             min-width: 0;
             line-height: 1.85;
-            overflow-wrap: anywhere;
+            overflow-wrap: break-word;
+        }
+
+        .profile-extra {
+            grid-area: extra;
+            min-width: 0;
+            line-height: 1.85;
+            overflow-wrap: break-word;
         }
 
         .profile-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px 12px;
-            margin: 5px 0;
+            gap: 5px 12px;
+            margin: 6px 0;
         }
 
         .profile-links a {
@@ -96,9 +116,10 @@
         }
 
         .visitor-counter {
-            margin-top: 7px;
             display: block;
+            margin-top: 8px;
             max-width: 100%;
+            height: auto;
         }
 
         /* =========================================
@@ -196,8 +217,6 @@
             color: #FF0000;
         }
 
-        /* Existing Jemdoc tables */
-
         table, table td {
             border: none;
         }
@@ -237,23 +256,37 @@
                 overflow-wrap: anywhere;
             }
 
-            /* Profile: left-right to top-bottom */
+            /* Profile: photo left, main info right */
 
             .profile-container {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
+                grid-template-columns: 34% minmax(0, 1fr);
+
+                grid-template-areas:
+                    "photo main"
+                    "extra extra";
+
+                column-gap: 14px;
+                row-gap: 18px;
+
+                align-items: start;
                 margin-top: 15px;
             }
 
             .profile-photo {
-                width: 125px;
-                max-width: 100%;
+                width: 100%;
+                max-width: 150px;
+                height: auto;
             }
 
-            .profile-info {
-                width: 100%;
+            .profile-main {
+                font-size: 13px;
+                line-height: 1.65;
                 min-width: 0;
+                overflow-wrap: anywhere;
+            }
+
+            .profile-extra {
+                width: 100%;
                 font-size: 14px;
                 line-height: 1.85;
             }
@@ -313,8 +346,6 @@
                 line-height: 1.6;
             }
 
-            /* Images */
-
             img {
                 max-width: 100%;
                 height: auto;
@@ -325,13 +356,9 @@
                 max-width: 250px;
             }
 
-            /* Existing ordinary tables */
-
             table:not(.imgtable) {
                 max-width: 100%;
             }
-
-            /* Prevent long words/links from overflowing */
 
             a, p, li, td, div, section {
                 overflow-wrap: anywhere;
@@ -352,8 +379,14 @@
                 font-size: 1.45em;
             }
 
-            .profile-photo {
-                width: 110px;
+            .profile-container {
+                grid-template-columns: 32% minmax(0, 1fr);
+                column-gap: 10px;
+            }
+
+            .profile-main {
+                font-size: 12px;
+                line-height: 1.6;
             }
 
             .section-nav {
@@ -380,85 +413,84 @@
         <h1>Pei-Kai Huang (黄培凯)</h1>
     </div>
 
- 
-<!-- Profile -->
-<div class="profile-container">
+    <!-- =========================================
+         Profile
+    ========================================= -->
 
-    <!-- 第一部分：头像 -->
-    <div class="profile-photo-wrapper">
-        <a href="https://pei-kaihuang.github.io/">
-            <img
-                class="profile-photo"
-                src="picture/peikai.jpg"
-                alt="Pei-Kai Huang"
-            >
-        </a>
-    </div>
+    <div class="profile-container">
 
-    <!-- 第二部分：职称与学校 -->
-    <div class="profile-main">
-
-        Associate Professor (副教授)<br>
-
-        <a href="https://www.fjnu.edu.cn/main.htm">
-            Fujian Normal University (福建师范大学)
-        </a><br>
-
-        <a href="https://ccs.fjnu.edu.cn/main.htm">
-            College of Computer and Cyber Security
-            (计算机与网络空间安全学院)
-        </a>
-
-    </div>
-
-    <!-- 第三部分：其他个人信息 -->
-    <div class="profile-extra">
-
-        福建省高层次人才（引进人才，境外C类）<br>
-
-        硕士生导师<br>
-
-        中国计算机学会（CCF）福州委员<br>
-
-        中国计算机学会青年论坛（CCF YOCSEF）
-        福州分论坛学术委员<br>
-
-        <a href="mailto:alwayswithme@fjnu.edu.cn">
-            Email: alwayswithme@fjnu.edu.cn
-        </a>
-
-        <!-- Academic Links -->
-        <div class="profile-links">
-
-            <a href="https://orcid.org/0000-0002-5198-5386">
-                [ORCID]
+        <!-- Photo -->
+        <div class="profile-photo-wrapper">
+            <a href="https://pei-kaihuang.github.io/">
+                <img
+                    class="profile-photo"
+                    src="picture/peikai.jpg"
+                    alt="Pei-Kai Huang"
+                >
             </a>
+        </div>
 
-            <a href="https://scholar.google.com/citations?user=94GKFzgAAAAJ&hl=en&oi=ao">
-                [Google Scholar]
-            </a>
+        <!-- Main Information -->
+        <div class="profile-main">
 
-            <a href="https://github.com/Pei-KaiHuang">
-                [GitHub]
-            </a>
+            Associate Professor (副教授)<br>
 
-            <a href="https://dblp.org/pid/320/2231.html">
-                [DBLP]
+            <a href="https://www.fjnu.edu.cn/main.htm">
+                Fujian Normal University (福建师范大学)
+            </a><br>
+
+            <a href="https://ccs.fjnu.edu.cn/main.htm">
+                College of Computer and Cyber Security
+                (计算机与网络空间安全学院)
             </a>
 
         </div>
 
-        <!-- Visitor Counter -->
-        <img
-            class="visitor-counter"
-            src="https://hits.sh/pei-kaihuang.github.io.svg?label=Visitors"
-            alt="Visitors"
-        >
+        <!-- Additional Information -->
+        <div class="profile-extra">
+
+            福建省高层次人才（引进人才，境外C类）<br>
+
+            硕士生导师<br>
+
+            中国计算机学会（CCF）福州委员<br>
+
+            中国计算机学会青年论坛（CCF YOCSEF）
+            福州分论坛学术委员<br>
+
+            <a href="mailto:alwayswithme@fjnu.edu.cn">
+                Email: alwayswithme@fjnu.edu.cn
+            </a>
+
+            <div class="profile-links">
+
+                <a href="https://orcid.org/0000-0002-5198-5386">
+                    [ORCID]
+                </a>
+
+                <a href="https://scholar.google.com/citations?user=94GKFzgAAAAJ&hl=en&oi=ao">
+                    [Google Scholar]
+                </a>
+
+                <a href="https://github.com/Pei-KaiHuang">
+                    [GitHub]
+                </a>
+
+                <a href="https://dblp.org/pid/320/2231.html">
+                    [DBLP]
+                </a>
+
+            </div>
+
+            <img
+                class="visitor-counter"
+                src="https://hits.sh/pei-kaihuang.github.io.svg?label=Visitors"
+                alt="Visitors"
+            >
+
+        </div>
 
     </div>
-
-</div>
-
 
 
     <!-- =========================================
