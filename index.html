@@ -1,720 +1,1371 @@
-<!DOCTYPE HTML>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <title>Pei-Kai Huang</title>
-    <meta charset="utf-8" />
-    <meta name="AUTHOR" content="Pei-Kai Huang">
-    <meta name="keywords" content="Pei-Kai Huang, deep learning, computer vision, face anti-spoofing, rPPG" />
-    <meta name="description" content="Pei-Kai Huang academic homepage" />
+
+    <meta charset="utf-8">
+    <meta name="author" content="Pei-Kai Huang">
+    <meta name="keywords" content="Pei-Kai Huang, deep learning, computer vision, face anti-spoofing, rPPG">
+    <meta name="description" content="Pei-Kai Huang academic homepage">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="jemdoc.css" type="text/css" />
+
+    <link rel="stylesheet" href="jemdoc.css" type="text/css">
     <link rel="shortcut icon" href="logo.ico">
+
     <style>
-        .section-nav {
-            margin: 22px 0 0;
+        /* =========================================
+           1. Global Layout
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #EEEEEE;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        #layout-content {
+            width: 100%;
+            max-width: 1100px;
+            min-width: 0;
+            margin: 0 auto;
+            padding: 25px 30px;
+            overflow-wrap: break-word;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        p, li, td {
+            overflow-wrap: break-word;
+        }
+
+        a {
+            overflow-wrap: anywhere;
+        }
+
+        /* =========================================
+           2. Profile
+        ========================================= */
+
+        .profile-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 0;
+            line-height: 1.85;
+            overflow-wrap: anywhere;
+        }
+
+        .profile-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+            margin: 5px 0;
+        }
+
+        .profile-links a {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .visitor-counter {
+            margin-top: 7px;
+            display: block;
+            max-width: 100%;
+        }
+
+        /* =========================================
+           3. Section Navigation
+        ========================================= */
+
+        .section-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 24px;
+            margin: 22px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #CCCCCC;
+        }
+
         .section-nav a {
             display: inline-block;
             font-size: 1.17em;
             font-weight: bold;
-            margin-right: 24px;
             text-decoration: none;
+            white-space: nowrap;
+            margin: 0;
+            padding: 5px 0;
         }
+
         .section-nav a.active {
             color: #000000;
             text-decoration: underline;
+            text-underline-offset: 5px;
         }
+
+        .section-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           4. Tab Panels
+        ========================================= */
+
         .tab-panel {
             display: none;
+            width: 100%;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
+
         .tab-panel.active {
             display: block;
         }
+
+        .tab-panel hr {
+            margin: 10px 0 15px;
+        }
+
+        /* =========================================
+           5. Publications
+        ========================================= */
+
+        .publication-item {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 0 20px;
+            padding: 0;
+            line-height: 1.75;
+            overflow-wrap: anywhere;
+        }
+
+        .publication-item i {
+            font-weight: 500;
+        }
+
+        .publication-item a {
+            overflow-wrap: anywhere;
+        }
+
+        .publication-links {
+            margin-top: 3px;
+        }
+
+        .publication-links a {
+            display: inline-block;
+        }
+
+        .publication-note {
+            color: #0000FF;
+            margin-top: 8px;
+        }
+
+        .venue {
+            color: #FF0000;
+        }
+
+        .highlight {
+            color: #FF0000;
+        }
+
+        /* Existing Jemdoc tables */
+
         table, table td {
             border: none;
         }
+
+        table {
+            max-width: 100%;
+        }
+
+        /* =========================================
+           6. Mobile Responsive Layout
+        ========================================= */
+
+        @media screen and (max-width: 768px) {
+
+            body {
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+                overflow-x: hidden;
+            }
+
+            #layout-content {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                margin: 0;
+                padding: 16px;
+            }
+
+            #toptitle {
+                margin-bottom: 15px;
+            }
+
+            #toptitle h1 {
+                font-size: 1.65em;
+                line-height: 1.3;
+                overflow-wrap: anywhere;
+            }
+
+            /* Profile: left-right to top-bottom */
+
+            .profile-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+                margin-top: 15px;
+            }
+
+            .profile-photo {
+                width: 125px;
+                max-width: 100%;
+            }
+
+            .profile-info {
+                width: 100%;
+                min-width: 0;
+                font-size: 14px;
+                line-height: 1.85;
+            }
+
+            .profile-links {
+                gap: 5px 12px;
+            }
+
+            /* Navigation */
+
+            .section-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px 16px;
+                margin-top: 20px;
+                padding-bottom: 12px;
+            }
+
+            .section-nav a {
+                font-size: 0.98em;
+                padding: 5px 0;
+                margin: 0;
+            }
+
+            /* Content */
+
+            h2 {
+                font-size: 1.35em;
+            }
+
+            h3 {
+                font-size: 1.15em;
+            }
+
+            p {
+                line-height: 1.75;
+            }
+
+            .tab-panel {
+                width: 100%;
+                max-width: 100%;
+                overflow-wrap: anywhere;
+            }
+
+            /* Publications */
+
+            .publication-item {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 22px;
+                line-height: 1.7;
+                overflow-wrap: anywhere;
+            }
+
+            .publication-item i {
+                line-height: 1.6;
+            }
+
+            /* Images */
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .genealogy-image {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            /* Existing ordinary tables */
+
+            table:not(.imgtable) {
+                max-width: 100%;
+            }
+
+            /* Prevent long words/links from overflowing */
+
+            a, p, li, td, div, section {
+                overflow-wrap: anywhere;
+            }
+        }
+
+        /* =========================================
+           7. Small Phones
+        ========================================= */
+
+        @media screen and (max-width: 380px) {
+
+            #layout-content {
+                padding: 12px;
+            }
+
+            #toptitle h1 {
+                font-size: 1.45em;
+            }
+
+            .profile-photo {
+                width: 110px;
+            }
+
+            .section-nav {
+                gap: 6px 12px;
+            }
+
+            .section-nav a {
+                font-size: 0.92em;
+            }
+        }
+
     </style>
 </head>
-<body bgcolor="#EEEEEE">
+
+<body>
+
 <div id="layout-content">
-<div id="toptitle">
-<h1>Pei-Kai Huang(黄培凯)</h1>
+
+    <!-- =========================================
+         Header
+    ========================================= -->
+
+    <div id="toptitle">
+        <h1>Pei-Kai Huang (黄培凯)</h1>
+    </div>
+
+    <!-- =========================================
+         Profile
+    ========================================= -->
+
+    <div class="profile-container">
+
+        <div class="profile-photo-wrapper">
+            <a href="https://pei-kaihuang.github.io/">
+                <img
+                    class="profile-photo"
+                    src="picture/peikai.jpg"
+                    alt="Pei-Kai Huang"
+                >
+            </a>
+        </div>
+
+        <div class="profile-info">
+
+            Associate Professor (副教授)<br>
+
+            <a href="https://www.fjnu.edu.cn/main.htm">
+                Fujian Normal University (福建师范大学)
+            </a><br>
+
+            <a href="https://ccs.fjnu.edu.cn/main.htm">
+                College of Computer and Cyber Security (计算机与网络空间安全学院)
+            </a><br>
+
+            <div class="profile-links">
+                <a href="https://orcid.org/0000-0002-5198-5386">[ORCID]</a>
+
+                <a href="https://scholar.google.com/citations?user=94GKFzgAAAAJ&hl=en&oi=ao">
+                    [Google Scholar]
+                </a>
+
+                <a href="https://github.com/Pei-KaiHuang">[GitHub]</a>
+
+                <a href="https://dblp.org/pid/320/2231.html">[DBLP]</a>
+            </div>
+
+            福建省高层次人才（引进人才，境外C类）<br>
+
+            硕士生导师<br>
+
+            中国计算机学会（CCF）福州委员<br>
+
+            中国计算机学会青年论坛（CCF YOCSEF）福州分论坛学术委员<br>
+
+            <a href="mailto:alwayswithme@fjnu.edu.cn">
+                alwayswithme@fjnu.edu.cn
+            </a><br>
+
+            <img
+                class="visitor-counter"
+                src="https://hits.sh/pei-kaihuang.github.io.svg?label=Visitors"
+                alt="Visitors"
+            >
+
+        </div>
+    </div>
+
+
+    <!-- =========================================
+         About Me
+    ========================================= -->
+
+    <h2>About me</h2>
+
+    <p>
+        I will return to my alma mater, Fujian Normal University,
+        for a faculty position.
+    </p>
+
+    <p>
+        I've received the Ph.D. degree from National Tsing Hua University
+        in 2025, the master degree from National Central University in 2019,
+        and the bachelor degree from Fujian Normal University in 2017.
+        I live in Xiamen and Fuzhou, China.
+    </p>
+
+    <p>
+        My research area focuses on face anti-spoofing and rPPG Estimation.
+        As the first author/the corresponding author, I have been published
+        in prestigious conferences in the field of computer vision,
+        including CVPR, AAAI, ECCV, BMVC, ICME, ICIP, and ACPR,
+        as well as in renowned journals, including TIFS,
+        Pattern Recognition, Information Science, and ATSIP.
+    </p>
+
+    <p>
+        I have reviewed papers from different CV/AI conferences,
+        e.g., CVPR, ECCV, AAAI, ACM MM, and biomedical related journals,
+        e.g., IJCV, TIFS, PR, TDSC, TIM.
+    </p>
+
+    <p>
+        <span class="highlight">
+            Publishing papers is not easy. For the manuscripts I review,
+            I strive to recommend acceptance with revisions whenever
+            the quality of the work permits.
+        </span>
+    </p>
+
+
+    <!-- =========================================
+         Navigation
+    ========================================= -->
+
+    <nav class="section-nav" aria-label="Homepage sections">
+
+        <a class="active" href="#news" data-section="news">News</a>
+
+        <a href="#publications" data-section="publications">Publications</a>
+
+        <a href="#academic-service" data-section="academic-service">Academic Service</a>
+
+        <a href="#funding" data-section="funding">Funding</a>
+
+        <a href="#teaching" data-section="teaching">Teaching</a>
+
+        <a href="#honors" data-section="honors">Awards &amp; Honors</a>
+
+        <a href="#fun-facts" data-section="fun-facts">Fun Facts</a>
+
+    </nav>
+
+
+    <!-- =========================================
+         News
+    ========================================= -->
+
+    <section id="news" class="tab-panel active">
+
+        <hr>
+
+        [2026/09] One paper was accepted by
+        <span class="venue">IEEE Transactions on Information Forensics &amp; Security (TIFS)</span>
+        (一区Top, CCF A, as the co-author)<br>
+
+        [2026/08] One paper was accepted by
+        <span class="venue">BMVC</span> 2026
+        (CCF C, as the co-author)<br>
+
+        [2026/08] One paper was accepted by
+        <span class="venue">Expert Systems with Applications (ESWA)</span>
+        (一区Top, as the first author)<br>
+
+        [2026/07] One paper was accepted by
+        <span class="venue">Pattern Recognition (PR)</span>
+        (一区Top, as the first author)<br>
+
+        [2026/06] One paper was accepted by
+        <span class="venue">ECCV</span> 2026
+        (CCF B, Tsinghua A, as the corresponding author)<br>
+
+        [2026/05] Two papers were accepted by
+        <span class="venue">ICPR</span> 2026
+        (CCF C, as the corresponding author)<br>
+
+        [2026/04] One project was recommended for funding by the
+        Natural Science Foundation of Fujian Province, China (as PI).<br>
+
+        [2026/02] One paper was accepted by
+        <span class="venue">Scientific Data</span>
+        (二区, as the second author)<br>
+
+        [2026/02] One paper was accepted by
+        <span class="venue">Pattern Recognition (PR)</span>
+        (一区Top, as the first author)<br>
+
+        [2026/01] One paper was accepted by
+        <span class="venue">Expert Systems with Applications (ESWA)</span>
+        (一区Top, as the sole corresponding author)<br>
+
+        [2025/07] One paper was accepted by
+        <span class="venue">Pattern Recognition (PR)</span>
+        (一区Top, as the first author)<br>
+
+        [2025/04] One paper was accepted by
+        <span class="venue">IEEE Transactions on Information Forensics &amp; Security (TIFS)</span>
+        (一区Top, CCF A, as the first author)<br>
+
+        [2025/01] One paper was accepted by
+        <span class="venue">Information Sciences</span>
+        (CCF B, as the first author)<br>
+
+        [2024/12] Offered a faculty position at Fujian Normal University<br>
+
+        [2024/12] One paper was accepted by
+        <span class="venue">APSIPA Transactions on Signal and Information Processing</span>
+        2024 (三区, as the first author)<br>
+
+        [2024/12] One paper was accepted by
+        <span class="venue">AAAI</span> 2025
+        (CCF A, as the first author)<br>
+
+        [2024/02] One paper was accepted by
+        <span class="venue">CVPR</span> 2024
+        (CCF A, as the first author)<br>
+
+        [2023/08] One paper was accepted by
+        <span class="venue">BMVC</span> 2023
+        (CCF C, as the first author)<br>
+
+        [2023/07] Two papers were accepted by
+        <span class="venue">ICIP</span> 2023
+        (CCF C, as the first author)<br>
+
+        [2023/03] One paper was accepted by
+        <span class="venue">ICME</span> 2023
+        (CCF B, as the first author)<br>
+
+        [2022/10] One paper was accepted by
+        <span class="venue">BMVC</span> 2022
+        (CCF C, as the first author)<br>
+
+        [2022/03] One paper was accepted by
+        <span class="venue">ICME</span> 2022
+        (CCF B, as the first author)<br>
+
+        [2021/07] One paper was accepted by
+        <span class="venue">ACPR</span> 2021
+        (EI, as the first author)<br>
+
+    </section>
+
+
+    <!-- =========================================
+         Publications
+    ========================================= -->
+
+    <section id="publications" class="tab-panel">
+
+        <h3>Preprint</h3>
+        <hr>
+
+        <!-- Preprint 1 -->
+        <div class="publication-item">
+
+            <i>FLIP: Feature-decoupled zero-/one-normal-shot anomaly detection with Language Image Pretraining</i><br>
+
+            Yan-Qin Ni, <b>Pei-Kai Huang</b>, Yi-Wei Lee,
+            Chia-Yu Lin, Chin-Chun Chang, Wei-Jen Wang, Deron Liang<br>
+
+            <span class="venue">Knowledge-Based Systems (Major revision)</span>,
+            [一区Top, CCF C,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>,
+            SCIE:Q1]<br>
+
+            Paper | Code
+
+        </div>
+
+        <!-- Preprint 2 -->
+        <div class="publication-item">
+
+            <i>Self-supervised Feature Disentanglement and Augmentation Network for One-class Face Anti-spoofing</i><br>
+
+            <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Ming-Tsung Hsu,
+            Fang-Yu Hsu, Yi-Ting Lin, Kai-Heng Chien,
+            Hao-Chiang Shao, Chiou-Ting Hsu<br>
+
+            <span class="venue">Pattern Recognition (Major revision)</span>,
+            [一区Top, CCF B,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>,
+            SCIE:Q1]<br>
+
+            <a href="https://arxiv.org/pdf/2503.22929" style="color:#000000;">Paper</a> | Code
+
+        </div>
+
+        <!-- Preprint 3 -->
+        <div class="publication-item">
+
+            <i>LangFabric: A Language-Annotated Multimodal Fabric Dataset for Fabric Defect Detection</i><br>
+
+            Yan-Qin Ni, <b>Pei-Kai Huang</b>, Tz-Gang Wang,
+            Wei-Jen Wang, Deron Liang, Chia-Yu Lin<br>
+
+            <span class="venue">Scientific Data (Nature family journal, Major revision)</span>,
+            [二区Top, SCIE:Q1]<br>
+
+            Paper | Code
+
+        </div>
+
+
+        <h3>Journal</h3>
+        <hr>
+
+        <!-- Journal 1 -->
+        <div class="publication-item">
+
+            <i>Weakly-Supervised Prompt-Guided Privacy Enhancement for Soft-Biometric Attributes in Facial Images</i><br>
+
+            Renyuan Hu, Zheyu Chen, <b>Pei-Kai Huang</b>,
+            Zhiqiang Yao, Biao Jin, Jianting Ning<br>
+
+            <span class="venue">IEEE Transactions on Information Forensics &amp; Security (TIFS)</span>,
+            2026, [一区Top, CCF A,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a>,
+            SCIE:Q1]<br>
+
+            <a href="https://ieeexplore.ieee.org/document/11711209" style="color:#000000;">Paper</a>
+
+        </div>
+
+        <!-- Journal 2 -->
+        <div class="publication-item">
+
+            <i>UCros-rPPGNet: Unsupervised Cross-Modal rPPG Estimation via Noise-Resistant Learning, Reliability-Aware Fusion, and Cross-Spectral Translation</i><br>
+
+            <b>Pei-Kai Huang</b>, Ya-Ting Chan, Kuan-Wen Chen,
+            Yen-Chun Chou, Shih-Yu Yang, Jhih-Wei Jhao,
+            Wen-Pin Chen, Jun-Ren Chen, Chiou-Ting Hsu<br>
+
+            <span class="venue">Expert Systems with Applications</span>,
+            2026, [一区Top, CCF C,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>,
+            SCIE:Q1]<br>
+
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S095741742603099X" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/UCros-rPPGNet" style="color:#000000;">Code</a>
+
+        </div>
+
+        <!-- Journal 3 -->
+        <div class="publication-item">
+
+            <i>Ultra-Short rPPG Estimation via Periodicity Guidance and Signal Reconstruction</i><br>
+
+            <b>Pei-Kai Huang</b>, Ya-Ting Chan, Kuan-Wen Chen,
+            Chiou-Ting Hsu, Xiaoding Wang, Md. Jalil Piran<br>
+
+            <span class="venue">Pattern Recognition</span>,
+            2026, [一区Top, CCF B,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>,
+            SCIE:Q1]<br>
+
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320326015372" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/ultra-short-rppg" style="color:#000000;">Code</a>
+
+        </div>
+
+        <!-- Journal 4 -->
+        <div class="publication-item">
+
+            <i>Enhancing Learnable Descriptive Convolutional Vision Transformer for Face Anti-Spoofing</i><br>
+
+            <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Ming-Tsung Hsu,
+            Fang-Yu Hsu, Chiou-Ting Hsu<br>
+
+            <span class="venue">Pattern Recognition</span>,
+            2026, [一区Top, CCF B,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>,
+            SCIE:Q1]<br>
+
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320326002542" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/LDCformer_Ext" style="color:#000000;">Code</a>
+
+            <div class="publication-note">
+                This paper was initially submitted in March 2024 and has undergone
+                five rounds of revision involving eight reviewers.<br>
+
+                In each round, after we completed the revisions, some of the
+                original reviewers were unfortunately unavailable to continue
+                the review process, resulting in new reviewers being assigned
+                and leading to repeated evaluation cycles.<br>
+
+                We are especially grateful to the Associate Editor assigned
+                after the reject-and-resubmit decision for the constructive
+                guidance and continuous support throughout the review process.
+            </div>
+
+        </div>
+
+        <!-- Journal 5 -->
+        <div class="publication-item">
+
+            <i>Multi-Modal Face Anti-Spoofing via Cross-Modal Feature Transitions</i><br>
+
+            Jun-Xiong Chong, Fang-Yu Hsu, Ming-Tsung Hsu,
+            Yi-Ting Lin, Kai-Heng Chien, Chiou-Ting Hsu,
+            <b>Pei-Kai Huang *</b> (* corresponding author)<br>
+
+            <span class="venue">Expert Systems with Applications</span>,
+            2026, [一区Top, CCF C,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>,
+            SCIE:Q1]<br>
+
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417426002058" style="color:#000000;">Paper</a> | Code
+
+        </div>
+
+        <!-- Journal 6 -->
+        <div class="publication-item">
+
+            <i>TSFabrics: A Time-Series Fabric Dataset for Real-Time Defect Detection on Circular Knitting Machines</i><br>
+
+            Yan-Qin Ni, <b>Pei-Kai Huang</b>, Wei-Jen Wang,
+            Deron Liang, and Chia-Yu Lin<br>
+
+            <span class="venue">Scientific Data (Nature family journal)</span>,
+            2026, [二区, SCIE:Q1]<br>
+
+            <a href="https://www.nature.com/articles/s41597-026-06748-9" style="color:#000000;">Paper</a>
+
+        </div>
+
+        <!-- Journal 7 -->
+        <div class="publication-item">
+
+            <i>Fully Test-Time rPPG Estimation via Synthetic Signal-Guided Feature Learning</i><br>
+
+            <b>Pei-Kai Huang</b>, Tzu-Hsien Chen, Ya-Ting Chan,
+            Kuan-Wen Chen, Shih-Yu Yang, Yen-Chun Chou,
+            Chiou-Ting Hsu<br>
+
+            <span class="venue">Pattern Recognition</span>,
+            2026, [一区Top, CCF B,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>,
+            SCIE:Q1]<br>
+
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320325007629" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/Pattern-Recognition-25-TTA-rPPG" style="color:#000000;">Code</a>
+
+        </div>
+
+        <!-- Journal 8 -->
+        <div class="publication-item">
+
+            <i>DD-rPPGNet: De-interfering and Descriptive Feature Learning for Unsupervised rPPG Estimation</i><br>
+
+            <b>Pei-Kai Huang</b>, Tzu-Hsien Chen, Ya-Ting Chan,
+            Kuan-Wen Chen, Chiou-Ting Hsu<br>
+
+            <span class="venue">IEEE Transactions on Information Forensics &amp; Security (TIFS)</span>,
+            2025, [一区Top, CCF A,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a>,
+            SCIE:Q1]<br>
+
+            <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10981460" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/TIFS2025-DD-rPPGNet" style="color:#000000;">Code</a>
+
+        </div>
+
+        <!-- Journal 9 -->
+        <div class="publication-item">
+
+            <i>Channel difference transformer for face anti-spoofing</i><br>
+
+            <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Ming-Tsung Hsu,
+            Fang-Yu Hsu, Chiou-Ting Hsu<br>
+
+            <span class="venue">Information Sciences</span>,
+            2025, [二区, CCF B,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>,
+            SCIE:Q1]<br>
+
+            <a href="https://www.sciencedirect.com/science/article/pii/S0020025525000362" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/CDformer" style="color:#000000;">Code</a>
+
+        </div>
+
+        <!-- Journal 10 -->
+        <div class="publication-item">
+
+            <i>A Survey on Deep Learning-based Face Anti-Spoofing</i><br>
+
+            <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Ming-Tsung Hsu,
+            Fang-Yu Hsu, Cheng-Hsuan Chiang, Tzu-Hsien Chen,
+            Chiou-Ting Hsu<br>
+
+            <span class="venue">APSIPA Transactions on Signal and Information Processing</span>,
+            2024, [三区, ESCI:Q1]<br>
+
+            <a href="https://www.emerald.com/atsip/article-pdf/13/1/1/11136088/116.20240053en.pdf" style="color:#000000;">Paper</a>
+
+        </div>
+
+
+        <!-- =====================================
+             Conference
+        ===================================== -->
+
+        <h3>Conference</h3>
+        <hr>
+
+        <!-- Conference 12 -->
+        <div class="publication-item">
+
+            <i>SHINE-PPG: Non-Lambertian Intrinsic Decomposition for Illumination-Robust rPPG</i><br>
+
+            Shih-Yu Yang, Yen-Chun Chou,
+            <b>Pei-Kai Huang</b>*, and Chiou-Ting Hsu*
+            (* corresponding author)<br>
+
+            <span class="venue">The 19th European Conference on Computer Vision (ECCV 2026)</span>,
+            2026, Malmö, Sweden,
+            [CCF B,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a>]<br>
+
+            <a href="https://link.springer.com/chapter/10.1007/978-3-032-37271-0_7" style="color:#000000;">Paper</a>
+
+        </div>
+
+        <!-- Conference 11 -->
+        <div class="publication-item">
+
+            <i>BASIL-rPPG: Basis Learning with Predictive rPPG Reconstruction for Heart Rate Estimation from Ultra-Short Facial Videos</i><br>
+
+            Jhih-Wei Jhao, Wen-Pin Chen, Jun-Ren Chen,
+            Yen-Chun Chou, Shih-Yu Yang,
+            <b>Pei-Kai Huang</b>*, and Chiou-Ting Hsu*
+            (* corresponding author)<br>
+
+            <span class="venue">The 28th International Conference on Pattern Recognition (ICPR 2026)</span>,
+            2026, Lyon, France,
+            [CCF C,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>]<br>
+
+            <a href="https://link.springer.com/chapter/10.1007/978-3-032-31404-8_44" style="color:#000000;">Paper</a>
+
+        </div>
+
+        <!-- Conference 10 -->
+        <div class="publication-item">
+
+            <i>OCC-FAS: A New Benchmark and Feature-Disentangled Mixture-of-Experts Framework for Occlusion-Aware Face Anti-Spoofing</i><br>
+
+            Jun-Ren Chen, Cheng-Hsiang Su, Yi-Chen Ou,
+            Yi-Ting Lin, Kai-Heng Chien,
+            <b>Pei-Kai Huang</b>*, and Chiou-Ting Hsu*
+            (* corresponding author)<br>
+
+            <span class="venue">The 28th International Conference on Pattern Recognition (ICPR 2026)</span>,
+            2026, Lyon, France,
+            [CCF C,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>]<br>
+
+            <a href="https://link.springer.com/chapter/10.1007/978-3-032-31452-9_32" style="color:#000000;">Paper</a> |
+            <a href="https://pei-kaihuang.github.io/occfasdataset/" style="color:#000000;">Dataset &amp; Code</a>
+
+        </div>
+
+        <!-- Conference 9 -->
+        <div class="publication-item">
+
+            <i>SLIP: Spoof-aware one-class face anti-spoofing with Language Image Pretraining</i><br>
+
+            <b>Pei-Kai Huang</b>, Jun-Xiong Chong,
+            Cheng-Hsuan Chiang, Tzu-Hsien Chen,
+            Tyng-Luh Liu, Chiou-Ting Hsu<br>
+
+            <span class="venue">The 39th Annual AAAI Conference on Artificial Intelligence (AAAI)</span>,
+            2025, Philadelphia, Pennsylvania, USA,
+            [CCF A,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a>]<br>
+
+            <a href="https://ojs.aaai.org/index.php/AAAI/article/download/32385/34540" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/AAAI25-SLIP" style="color:#000000;">Code</a> |
+            <a href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2025_AAAI_poster.pdf" style="color:#000000;">Poster</a>
+
+        </div>
+
+        <!-- Conference 8 -->
+        <div class="publication-item">
+
+            <i>One-Class Face Anti-spoofing via Spoof Cue Map-Guided Feature Learning</i><br>
+
+            <b>Pei-Kai Huang</b>, Cheng-Hsuan Chiang,
+            Tzu-Hsien Chen, Jun-Xiong Chong,
+            Tyng-Luh Liu, Chiou-Ting Hsu<br>
+
+            <span class="venue">The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</span>,
+            2024, Seattle WA, USA,
+            [CCF A,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a>]<br>
+
+            <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Huang_One-Class_Face_Anti-spoofing_via_Spoof_Cue_Map-Guided_Feature_Learning_CVPR_2024_paper.pdf" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/CVPR24_OC_SCMNet" style="color:#000000;">Code</a> |
+            <a href="https://www.bilibili.com/video/BV1Lw4m1Q7fK/" style="color:#000000;">Video</a> |
+            <a href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2024_CVPR_poster.pdf" style="color:#000000;">Poster</a>
+
+        </div>
+
+        <!-- Conference 7 -->
+        <div class="publication-item">
+
+            <i>Test-Time Adaptation for Robust Face Anti-Spoofing</i><br>
+
+            <b>Pei-Kai Huang</b>, Chen-Yu Lu,
+            Shu-Jung Chang, Jun-Xiong Chong,
+            Chiou-Ting Hsu<br>
+
+            <span class="venue">British Machine Vision Conference (BMVC)</span>,
+            2023, Aberdeen, UK,
+            [CCF C,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>]<br>
+
+            <a href="https://papers.bmvc2023.org/0379.pdf" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/TTA-FAS" style="color:#000000;">Code</a> |
+            <a href="https://www.bilibili.com/video/BV1fN4y1r7yL/" style="color:#000000;">Video</a> |
+            <a href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2023_BMVC_poster.pdf" style="color:#000000;">Poster</a>
+
+        </div>
+
+        <!-- Conference 6 -->
+        <div class="publication-item">
+
+            <i>LDCformer: Incorporating Learnable Descriptive Convolution to Vision Transformer for Face Anti-Spoofing</i><br>
+
+            <b>Pei-Kai Huang</b>, Cheng-Hsuan Chiang,
+            Jun-Xiong Chong, Tzu-Hsien Chen,
+            Hui-Yu Ni, Chiou-Ting Hsu<br>
+
+            <span class="venue">IEEE International Conference on Image Processing (ICIP)</span>,
+            2023, Kuala Lumpur, Malaysia,
+            [CCF C,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>]<br>
+
+            <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10222330" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Pei-KaiHuang/ICIP23_D-LDCformer" style="color:#000000;">Code</a> |
+            <a href="https://www.bilibili.com/video/BV1Wh4y1M75d/" style="color:#000000;">Video</a> |
+            <a href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2023_ICIP_poster.pdf" style="color:#000000;">Poster</a>
+
+        </div>
+
+        <!-- Conference 5 -->
+        <div class="publication-item">
+
+            <i>Single-Domain Generalization for Semantic Segmentation via Dual-level Domain Augmentation</i><br>
+
+            Shu-Jung Chang*, Chen-Yu Lu*,
+            <b>Pei-Kai Huang*</b>, Chiou-Ting Hsu
+            (* equal contribution)<br>
+
+            <span class="venue">IEEE International Conference on Image Processing (ICIP)</span>,
+            2023, Kuala Lumpur, Malaysia,
+            [CCF C,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>]<br>
+
+            <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10222684" style="color:#000000;">Paper</a> |
+            <a href="https://www.bilibili.com/video/BV1Nw411U7Qv/" style="color:#000000;">Video</a> |
+            Oral
+
+        </div>
+
+        <!-- Conference 4 -->
+        <div class="publication-item">
+
+            <i>Towards Diverse Liveness Feature Representation and Domain Expansion for Cross-Domain Face Anti-Spoofing</i><br>
+
+            <b>Pei-Kai Huang</b>, Jun-Xiong Chong,
+            Hui-Yu Ni, Tzu-Hsien Chen,
+            Chiou-Ting Hsu<br>
+
+            <span class="venue">IEEE International Conference on Multimedia &amp; Expo (ICME)</span>,
+            2023, Brisbane, Australia, [CCF B]<br>
+
+            <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10220051" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/Jxchong1999/DFANet" style="color:#000000;">Code</a> |
+            <a href="https://www.bilibili.com/video/BV1Y8411D7DA/" style="color:#000000;">Video</a> |
+            <a href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2023_ICME_poster.pdf" style="color:#000000;">Poster</a>
+
+        </div>
+
+        <!-- Conference 3 -->
+        <div class="publication-item">
+
+            <i>Learnable Descriptive Convolutional Network for Face Anti-Spoofing</i><br>
+
+            <b>Pei-Kai Huang</b>, Hui-Yu Ni,
+            Yan-Qin Ni, Chiou-Ting Hsu<br>
+
+            <span class="venue">British Machine Vision Conference (BMVC)</span>,
+            2022, London, UK,
+            [CCF C,
+            <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>]<br>
+
+            <a href="https://bmvc2022.mpi-inf.mpg.de/0239.pdf" style="color:#000000;">Paper</a> |
+            <a href="https://github.com/huiyu8794/LDCNet" style="color:#000000;">Code</a> |
+            <a href="https://www.bilibili.com/video/BV1Wd4y1n7rd/" style="color:#000000;">Video</a> |
+            <a href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2022_BMVC_poster.pdf" style="color:#000000;">Poster</a>
+
+        </div>
+
+        <!-- Conference 2 -->
+        <div class="publication-item">
+
+            <i>Learning to Augment Face Presentation Attack Dataset via Disentangled Feature Learning from Limited Spoof Data</i><br>
+
+            <b>Pei-Kai Huang</b>, Chu-Ling Chang,
+            Hui-Yu Ni, Chiou-Ting Hsu<br>
+
+            <span class="venue">IEEE International Conference on Multimedia &amp; Expo (ICME)</span>,
+            2022, Taipei, Taiwan, [CCF B]<br>
+
+            <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9859657" style="color:#000000;">Paper</a> |
+            <a href="https://www.bilibili.com/video/BV11M411e7YP/" style="color:#000000;">Video</a> |
+            Oral
+
+        </div>
+
+        <!-- Conference 1 -->
+        <div class="publication-item">
+
+            <i>Face Anti-Spoofing via Robust Auxiliary Estimation and Discriminative Feature Learning</i><br>
+
+            <b>Pei-Kai Huang</b>, Ming-Chieh Chin,
+            Chiou-Ting Hsu<br>
+
+            <span class="venue">Asian Conference on Pattern Recognition (ACPR)</span>,
+            2021, Jeju Island, Korea, [Indexed by EI]<br>
+
+            <a href="https://link.springer.com/chapter/10.1007/978-3-031-02375-0_33" style="color:#000000;">Paper</a> |
+            <a href="https://www.bilibili.com/video/BV1tx4y1j7Af/" style="color:#000000;">Video</a> |
+            Oral
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         Funding
+    ========================================= -->
+
+    <section id="funding" class="tab-panel">
+
+        <hr>
+
+        福建省自然科学基金创青项目：
+        复杂场景下活体生理信号驱动的人脸反欺骗研究
+        <b>（负责人）</b>，
+        2026.05-2029.04,
+        Grant: 2026J008139,
+        8 万人民币<br>
+
+        福建省教育厅重点项目：
+        恶劣天气下面向自动驾驶的自适应语义分割方法研究
+        <b>（排序第三）</b>，
+        2026.04-2028.12,
+        Grant: JZ250007,
+        10 万人民币<br>
+
+        福建师范大学计算机与网络空间安全学院启动经费
+        <b>（负责人）</b>，
+        2025.08-2033.08,
+        10 万人民币
+
+    </section>
+
+
+    <!-- =========================================
+         Academic Service
+    ========================================= -->
+
+    <section id="academic-service" class="tab-panel">
+
+        <hr>
+
+        <b>Program Committee</b>:
+        Program Co-Chair &amp; Workshop Organizer,
+        BD-SMDT 2026, IEEE BigData 2026
+        <br><br>
+
+        <b>CCF YOCSEF Fuzhou Academic Committee (AC) Member</b>:
+        2026-2029
+        <br>
+
+        <b>CCF Fuzhou Chapter Committee Member</b>:
+        2026-2029
+        <br>
+
+        <b>The youth editorial board member</b>:
+        Artificial Intelligence and Autonomous Systems (AIAS),
+        2025.09-2027.09
+
+        <br><br>
+
+        <b>Conference paper reviewer</b>:
+        CVPR26, AAAI26, ICCV25, CVPR25, BMVC25,
+        ICME25, AAAI25, CVPR24, BMVC24, ICCV23,
+        BMVC23, ICIP23, ICME23, ECCV22, CVPR22,
+        BMVC22, ICME22
+
+        <br><br>
+
+        <b>Journal paper reviewer</b>:
+
+        Scientific Data (Nature family journal) x2,
+
+        IEEE Transactions on Information Forensics &amp; Security (TIFS) x4,
+
+        International Journal of Computer Vision (IJCV) x1,
+
+        IEEE Transactions on Dependable and Secure Computing (TDSC) x1,
+
+        IEEE Transactions on Instrumentation and Measurement (TIM) x2,
+
+        IEEE Transactions on Biomedical Engineering (TBME) x1,
+
+        IEEE Transactions on Circuits and Systems for Video Technology (TCSVT) x2,
+
+        Pattern Recognition (PR) x4,
+
+        Neural Networks x1,
+
+        Journal of Selected Topics in Applied Earth Observations and Remote Sensing (JSTARS) x1,
+
+        Image and Vision Computing x1
+
+    </section>
+
+
+    <!-- =========================================
+         Teaching
+    ========================================= -->
+
+    <section id="teaching" class="tab-panel">
+
+        <hr>
+
+        《人工智能与大数据》（2.5学分，本科专业选修课），课程负责人。
+        <br>
+
+        Artificial Intelligence and Big Data
+        (2.5 credits, undergraduate elective course),
+        Course Coordinator
+
+    </section>
+
+
+    <!-- =========================================
+         Awards & Honors
+    ========================================= -->
+
+    <section id="honors" class="tab-panel">
+
+        <hr>
+
+        福建省高层次人才（引进人才，境外C类）
+        <br>
+
+        2026年福建省人工智能赋能教育教学改革项目
+        （校级，“人工智能+”专业类课程），
+        人工智能与大数据（排序第二），2026.06.
+        <br>
+
+        福建省网络空间安全学会2025年学术年会优秀论文
+        一等奖（排序第一），2025.11.
+        <br>
+
+        IPPR 第十八屆碩博士論文佳作獎
+        (PS: 畢業近三年内的台灣博士畢業生，前Top 8).
+        2025.08.
+        <br>
+
+        斐陶斐荣誉会员 - 台灣清華大學
+        (PS: 当年度台灣清華大學博士毕业生，Top 10%).
+        2025.08.
+
+    </section>
+
+
+    <!-- =========================================
+         Fun Facts
+    ========================================= -->
+
+    <section id="fun-facts" class="tab-panel">
+
+        <hr>
+
+        <p>
+            我的学术谱系可追溯至卡尔·弗里德里希·高斯
+            （Carl Friedrich Gauss），他是我的第十三代学术祖先。
+        </p>
+
+        <p>
+            My academic genealogy can be traced back to
+            Carl Friedrich Gauss, my 13th-generation academic ancestor.
+        </p>
+
+        <img
+            class="genealogy-image"
+            src="picture/Gaussian.png"
+            alt="Academic genealogy"
+            width="250"
+        >
+
+    </section>
+
 </div>
-<table class="imgtable"><tr><td>
-<a href="https://pei-kaihuang.github.io/"><img src="picture/peikai.jpg" alt="alt text" width="150px" /></a>&nbsp;</td> 
-<td align="left">  
- Associate Professor (副教授) <br />
-<a href="https://www.fjnu.edu.cn/main.htm">Fujian Normal University (福建师范大学) </a>  <br />
-<a href="https://ccs.fjnu.edu.cn/main.htm">College of Computer and Cyber Security (计算机与网络空间安全学院) </a> <br />
-<a href="https://orcid.org/0000-0002-5198-5386">[ORCiD]</a>
-<a href="https://scholar.google.com/citations?user=94GKFzgAAAAJ&hl=en&oi=ao">[Google Scholar]</a> 
-  <a href="https://github.com/Pei-KaiHuang">[GitHub]</a>
-	 <a href="https://dblp.org/pid/320/2231.html">[dblp]</a> <br /> 
-	福建省高层次人才(引进人才, 境外C类) <br />   
-	硕士生导师  <br />  
-	中国计算机学会(CCF) 福州委员 <br />   
-	中国计算机学会青年论坛 (CCF YOCSEF) 福州分论坛学术委员 <br />
-	<a href= "mailto:alwayswithme@fjnu.edu.cn">alwayswithme@fjnu.edu.cn </a>  <br />
-  <!--  IEEE Member, CCF Member <br /> -->
-	<img
-  src="https://hits.sh/pei-kaihuang.github.io.svg?label=Visitors"
-  alt="Visitors"
-/>
-</td></tr>
-
-</table>
-
-	
-<h2>About me</h2>  
-<p>
-   I will return to my alma mater, Fujian Normal University, for a faculty position.   
-</p>
-
-<p>I've received the Ph.D. degree from National Tsing Hua University in 2025, the master degree from National Central University in 2019, and the bachelor degree from Fujian Normal University in 2017.
-   I live in Xiamen and Fuzhou, China. </p> 
-
-	
-<p>My research area focuses on face anti-spoofing and rPPG Estimation. As the first author/ the corresponding author, I have been published in prestigious conferences in the field of computer vision, including CVPR, AAAI, ECCV, BMVC, ICME, ICIP, and ACPR, as well as in renowned journals, including TIFS, Pattern Recognition, Information Science, and ATSIP.  </p>
-<p> I have reviewed papers from different CV/AI conferences, e.g., CVPR, ECCV, AAAI, ACM MM, and biomedical related journals, e.g., IJCV, TIFS, PR, TDSC, TIM.   </p>
-<p> 
-
-	<p> 
-	 <span style="color: #FF0000;"> Publishing papers is not easy. For the manuscripts I review, I strive to recommend acceptance with revisions whenever the quality of the work permits.</span >
-</p> 
-	
-<!-- paper   	<b>If you are interested in pursuing a PhD at National Tsinghua University, National Taiwan University, National Yang Ming Chiao Tung University, National Cheng Kung University, National Central University, please contact me. I would be happy to introduce you to a professor.
-</b> -->
-</p>
 
 
-<nav class="section-nav" aria-label="Homepage sections">
-<a class="active" href="#news" data-section="news"> News</a>
-<a href="#publications" data-section="publications">Publications</a>	
-<a href="#Academic Service" data-section="Academic Service">Academic Service</a>
-<a href="#funding" data-section="funding">Funding</a>
-<a href="#Teaching" data-section="Teaching">Teaching</a>
-<a href="#Honors" data-section="Honors">Awards & Honors</a>	
-<a href="#Fun Facts" data-section="Fun Facts">Fun Facts</a>	
+<!-- =========================================
+     Tab Switching Script
+========================================= -->
 
-</nav>
-<section id="news" class="tab-panel active">
-<hr />  
-[2026/09] One paper was accepted by <span style="color: #FF0000;"> IEEE Transactions on Information Forensics & Security (TIFS) </span > (一区Top, CCF A, as the co-author)<br>
-[2026/08] One paper was accepted by <span style="color: #FF0000;"> BMVC </span > 2026 ( CCF C, as the co-author)<br>
-[2026/08] One paper was accepted by <span style="color: #FF0000;">  Expert Systems with Applications (ESWA) </span > (一区Top, as the first author)<br> 
-[2026/07] One paper was accepted by <span style="color: #FF0000;"> Pattern Recognition (PR) </span > (一区Top, as the first author)<br>
-[2026/06] One paper was accepted by <span style="color: #FF0000;"> ECCV  </span > 2026 (CCF B, Tsinghua A, as the corresponding author) <br> 
-[2026/05] Two papers were accepted by <span style="color: #FF0000;"> ICPR </span > 2026 (CCF C, as the corresponding author)<br>	
-[2026/04] One project was recommended for funding by the Natural Science Foundation of Fujian Province, China (as PI).<br> 
-[2026/02] One paper was accepted by <span style="color: #FF0000;"> Scientific Data </span > (二区, as the second author)<br>
-[2026/02] One paper was accepted by <span style="color: #FF0000;">  Pattern Recognition (PR) </span > (一区Top, as the first author)<br>
-[2026/01] One paper was accepted by <span style="color: #FF0000;"> Expert Systems with Applications (ESWA) </span > (一区Top, as the sole corresponding author)<br> 
-[2025/07] One paper was accepted by <span style="color: #FF0000;"> Pattern Recognition (PR) </span > (一区Top, as the first author)<br>
-[2025/04] One paper was accepted by <span style="color: #FF0000;"> IEEE Transactions on Information Forensics & Security (TIFS) </span > (一区Top, CCF A, as the first author)<br>
-[2025/01] One paper was accepted by <span style="color: #FF0000;"> Information Sciences </span > (CCF B, as the first author)<br>
-[2024/12] Offered a faculty position at Fujian Normal University <br>
-[2024/12] One paper was accepted by <span style="color: #FF0000;"> APSIPA Transactions on Signal and Information Processing </span > 2024 (三区, as the first author)<br>	
-[2024/12] One paper was accepted by <span style="color: #FF0000;"> AAAI </span > 2025 (CCF A, as the first author)<br>	
-[2024/02] One paper was accepted by <span style="color: #FF0000;">  CVPR </span > 2024 (CCF A, as the first author)<br>	 
-[2023/08] One paper was accepted by <span style="color: #FF0000;"> BMVC </span > 2023 (CCF C, as the first author)<br>	
-[2023/07] Two papers were accepted by <span style="color: #FF0000;"> ICIP </span > 2023 (CCF C, as the first author)<br> 
-[2023/03] One paper was accepted by <span style="color: #FF0000;"> ICME </span > 2023 (CCF B, as the first author)<br> 
-[2022/10] One paper was accepted by <span style="color: #FF0000;"> BMVC </span > 2022 (CCF C, as the first author)<br>	
-[2022/03] One paper was accepted by <span style="color: #FF0000;"> ICME </span > 2022 (CCF B, as the first author)<br>	
-[2021/07] One paper was accepted by <span style="color: #FF0000;"> ACPR </span > 2021 (EI, as the first author)<br>
-</section>
-<section id="publications" class="tab-panel">
-<h3>Preprint</h3> 
-	<hr />
- 
-<!-- paper JXX -->
-	<table><tbody><tr>  
-	<td>
-		<div align="left">
-			<i>FLIP: Feature-decoupled zero-/one-normal-shot anomaly detection with Language Image Pretraining</i>
-			<br>
-		    Yan-Qin Ni, <b>Pei-Kai Huang</b>, Yi-Wei Lee, Chia-Yu Lin, Chin-Chun Chang,Wei-Jen Wang,Deron Liang<br>
-	  
-		     <span style="color: #FF0000;">  Knowledge-Based Systems, (Major revision) </span >, [一区Top, CCF C,  <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>, SCIE:Q1]
-			<br>
-		  Paper  |  Code   
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>  
-
-<!-- paper JXX -->
-	<table><tbody><tr> 
-	<td>
-		<div align="left">
-			<i>Self-supervised  Feature Disentanglement and Augmentation Network for One-class Face Anti-spoofing</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Ming-Tsung Hsu, Fang-Yu Hsu, Yi-Ting Lin, Kai-Heng Chien, Hao-Chiang Shao, Chiou-Ting Hsu<br>
-	  
-		     <span style="color: #FF0000;"> Pattern Recognition, (Major revision) </span >, [一区Top, CCF B,  <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>, SCIE:Q1]
-			<br>
-		   <a href="https://arxiv.org/pdf/2503.22929" style="color:#000000;">Paper</a>  | 
-			 Code  
-			
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>  
-
-<!-- paper JXX -->
-	<table><tbody><tr> 
-	 
-	<td>
-		<div align="left">
-			<i>LangFabric: A Language-Annotated Multimodal Fabric Dataset for Fabric Defect Detection</i>
-			<br>
-		    Yan-Qin Ni, <b>Pei-Kai Huang</b>, Tz-Gang Wang, Wei-Jen Wang, Deron Liang,  Chia-Yu Lin<br>
-	  
-		     <span style="color: #FF0000;">   Scientific Data (Nature family journal, Major revision) </span >, [二区Top, SCIE:Q1]
-			<br>
-		  Paper  | 
-			 Code  
-			
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>  
-	 
-
-	<h3>Journal</h3> 
-	<hr />
-
-<!-- paper xxx -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Weakly-Supervised Prompt-Guided Privacy Enhancement for Soft-Biometric Attributes in Facial Images</i>
-			<br>
-			Renyuan Hu, Zheyu Chen,   <b>Pei-Kai Huang</b>, Zhiqiang Yao, Biao Jin, Jianting Ning <br>
-	  
-		       <span style="color: #FF0000;"> IEEE Transactions on Information Forensics & Security (TIFS) </span >, 2026 , [一区Top, CCF A, <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a>, SCIE:Q1 ]
-			<br>
-		     <a href="https://ieeexplore.ieee.org/document/11711209" style="color:#000000;">Paper</a> 
-			
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-
-	
-<!-- paper JXX -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>UCros-rPPGNet: Unsupervised Cross-Modal rPPG Estimation via Noise-Resistant Learning, Reliability-Aware Fusion, and Cross-Spectral Translation</i>
-			<br>
-		    <b>Pei-Kai Huang  </b>, Ya-Ting Chan, Kuan-Wen Chen, Yen-Chun Chou, Shih-Yu Yang, Jhih-Wei Jhao,Wen-Pin Chen, Jun-Ren Chen, Chiou-Ting Hsu  <br>
-	  
-		   <span style="color: #FF0000;">  Expert Systems with Applications, </span > 2026, [一区Top, CCF C, <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>, SCIE:Q1]
-			<br>
-		  <a href="https://www.sciencedirect.com/science/article/abs/pii/S095741742603099X" style="color:#000000;">Paper</a> | 
-			 <a href="https://github.com/Pei-KaiHuang/UCros-rPPGNet" style="color:#000000;">Code</a>   
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>  
-	
-
-<!-- paper J202507 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Ultra-Short rPPG Estimation via Periodicity Guidance and Signal Reconstruction</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Ya-Ting Chan, Kuan-Wen Chen,   Chiou-Ting Hsu, Xiaoding Wang, Md. Jalil Piran<br>
-	            <span style="color: #FF0000;"> Pattern Recognition,  </span > 2026, [一区Top, CCF B,  <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>, SCIE:Q1]
-			<br>
-		  <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320326015372" style="color:#000000;">Paper</a>  |   
-				<a href="https://github.com/Pei-KaiHuang/ultra-short-rppg" style="color:#000000;">Code</a> 
-	
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>  
-
-	
-<!-- paper J03 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Enhancing Learnable Descriptive Convolutional Vision Transformer for Face Anti-Spoofing</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Ming-Tsung Hsu,  Fang-Yu Hsu, Chiou-Ting Hsu<br>
-	  
-		       <span style="color: #FF0000;"> Pattern Recognition, </span > 2026, [一区Top, CCF B, <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>, SCIE:Q1]
-			<br>
-		  <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320326002542" style="color:#000000;">Paper</a>  |  
-		 <a href="https://github.com/Pei-KaiHuang/LDCformer_Ext" style="color:#000000;">Code</a>
-		<br>	
-		<br> <span style="color: #0000FF;"> This paper was initially submitted in March 2024 and has undergone five rounds of revision involving eight reviewers.   </span >
-			<br> <span style="color: #0000FF;">In each round, after we completed the revisions, some of the original reviewers were unfortunately unavailable to continue the review process, resulting in new reviewers being assigned and leading to repeated evaluation cycles.</span >
-			<br> <span style="color: #0000FF;">We are especially grateful to the Associate Editor assigned after the reject-and-resubmit decision for the constructive guidance and continuous support throughout the review process. </span >
-	
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>  
-
-    
-   <!-- paper JXX -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Multi-Modal Face Anti-Spoofing via Cross-Modal Feature Transitions</i>
-			<br>
-		    Jun-Xiong Chong, Fang-Yu Hsu, Ming-Tsung Hsu, Yi-Ting Lin, Kai-Heng Chien, Chiou-Ting Hsu,<b>Pei-Kai Huang *</b> (* corresponding author) <br>
-	  
-		   <span style="color: #FF0000;">  Expert Systems with Applications,  </span >2026, [一区Top, CCF C, <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>, SCIE:Q1]
-			<br>
-		   <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417426002058" style="color:#000000;">Paper</a>  | 
-			 Code  
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>  
-		
-	 
-	<td>
-		<div align="left">
-			<i>TSFabrics: A Time-Series Fabric Dataset for Real-Time Defect Detection on Circular Knitting Machines</i>
-			<br>
-		    Yan-Qin Ni, <b>Pei-Kai Huang</b>, Wei-Jen Wang, Deron Liang, and Chia-Yu Lin <br>
-	  
-		   <span style="color: #FF0000;">  Scientific Data (Nature family journal),   </span >2026,  [二区, SCIE:Q1]
-			<br>
-		          <a href="https://www.nature.com/articles/s41597-026-06748-9" style="color:#000000;">Paper</a>  
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-	
-<!-- paper J04 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Fully Test-Time rPPG Estimation via Synthetic Signal-Guided Feature Learning</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Tzu-Hsien Chen, Ya-Ting Chan, Kuan-Wen Chen, Shih-Yu Yang, Yen-Chun Chou, Chiou-Ting Hsu<br>
-	  
-		      <span style="color: #FF0000;"> Pattern Recognition </span >, 2026 , [一区Top, CCF B, <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a>, SCIE:Q1]
-			<br>
-		  <a href="https://www.sciencedirect.com/science/article/abs/pii/S0031320325007629" style="color:#000000;">Paper</a>  |   <a href="https://github.com/Pei-KaiHuang/Pattern-Recognition-25-TTA-rPPG" style="color:#000000;">Code</a>  
-			
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-	
-<!-- paper J04 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>DD-rPPGNet: De-interfering and Descriptive Feature Learning for Unsupervised rPPG Estimation</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Tzu-Hsien Chen, Ya-Ting Chan, Kuan-Wen Chen, Chiou-Ting Hsu<br>
-	  
-		       <span style="color: #FF0000;"> IEEE Transactions on Information Forensics & Security (TIFS) </span >, 2025 , [一区Top, CCF A, <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a>, SCIE:Q1 ]
-			<br>
-		   <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10981460" style="color:#000000;">Paper</a>  | 
-			<a href="https://github.com/Pei-KaiHuang/TIFS2025-DD-rPPGNet" style="color:#000000;">Code</a> 
-			 
-			
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>  
-	
-	
-<!-- paper J02 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Channel difference transformer for face anti-spoofing</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Ming-Tsung Hsu,  Fang-Yu Hsu, Chiou-Ting Hsu<br>
-	  
-		      <span style="color: #FF0000;">  Information Sciences </span >, 2025 [二区, CCF B, <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a> , SCIE:Q1]
-			<br>
-		  <a href="https://www.sciencedirect.com/science/article/pii/S0020025525000362" style="color:#000000;">Paper</a>    | 
-		<a href="https://github.com/Pei-KaiHuang/CDformer" style="color:#000000;">Code</a> 
-		    
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-<!-- paper J01 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>A Survey on Deep Learning-based Face Anti-Spoofing</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Ming-Tsung Hsu,  Fang-Yu Hsu, Cheng-Hsuan Chiang, Tzu-Hsien Chen,  Chiou-Ting Hsu<br>
-	  
-		     <span style="color: #FF0000;"> APSIPA Transactions on Signal and Information Processing </span >, 2024 [三区, ESCI:Q1 ]
-			<br>
-		  <a href="https://www.emerald.com/atsip/article-pdf/13/1/1/11136088/116.20240053en.pdf" style="color:#000000;">Paper</a>     
-		    
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-
-
-
-	
-	<h3>Conference</h3> 
-	<hr /> 
-
-		<!-- paper C12 -->
-<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>SHINE-PPG: Non-Lambertian Intrinsic Decomposition for Illumination-Robust rPPG</i>
-			<br> 
-            Shih-Yu Yang, Yen-Chun Chou, <b>Pei-Kai Huang </b>* , and Chiou-Ting Hsu*  (* corresponding author)
-			<br>
-			
-		     <span style="color: #FF0000;">The 19th European Conference on Computer Vision (ECCV 2026) </span >, 2026, Malmö, Sweden, [ 
-			CCF B,  <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a> ]
-			<br>
-		<a href="https://link.springer.com/chapter/10.1007/978-3-032-37271-0_7" style="color:#000000;">Paper</a>    	 
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-
-	<!-- paper C11 -->
-<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>BASIL-rPPG: Basis Learning with Predictive rPPG Reconstruction for Heart Rate Estimation from Ultra-Short Facial Videos</i>
-			<br> 
-            Jhih-Wei Jhao, Wen-Pin Chen, Jun-Ren Chen, Yen-Chun Chou, Shih-Yu Yang, <b>Pei-Kai Huang </b>* , and Chiou-Ting Hsu*  (* corresponding author)
-			<br>
-			
-		     <span style="color: #FF0000;">The 28th International Conference on Pattern Recognition (ICPR 2026) </span >, 2026, Lyon, France, [ 
-			CCF C,  <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a> ]
-			<br>
-		  <a href="https://link.springer.com/chapter/10.1007/978-3-032-31404-8_44" style="color:#000000;">Paper</a>    
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-	
-<!-- paper C10 -->
-<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>OCC-FAS: A New Benchmark and Feature-Disentangled Mixture-of-Experts Framework for Occlusion-Aware Face Anti-Spoofing</i>
-			<br> 
-            Jun-Ren Chen, Cheng-Hsiang Su, Yi-Chen Ou, Yi-Ting Lin, Kai-Heng Chien,  <b>Pei-Kai Huang </b>* , and Chiou-Ting Hsu*  (* corresponding author)
-			<br>
-			
-		     <span style="color: #FF0000;">The 28th International Conference on Pattern Recognition (ICPR 2026) </span >, 2026, Lyon, France , [ 
-			CCF C,  <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a> ]
-			<br>
-		  <a href="https://link.springer.com/chapter/10.1007/978-3-032-31452-9_32" style="color:#000000;">Paper</a>   |  <a href="https://pei-kaihuang.github.io/occfasdataset/" style="color:#000000;"> Dataset & Code</a> |   	 
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-
-	
-<!-- paper C09 -->
-<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>SLIP: Spoof-aware one-class face anti-spoofing with Language Image Pretraining</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Cheng-Hsuan Chiang, Tzu-Hsien Chen, Tyng-Luh Liu, Chiou-Ting Hsu.<br>
-	  
-		     <span style="color: #FF0000;">The 39th Annual AAAI Conference on Artificial Intelligence (AAAI) </span >, 2025, Philadelphia, Pennsylvania, USA , [ 
-			CCF A,  <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a> ]
-			<br>
-		 <a href="https://ojs.aaai.org/index.php/AAAI/article/download/32385/34540" style="color:#000000;">Paper</a>   | 
-		<a href="https://github.com/Pei-KaiHuang/AAAI25-SLIP" style="color:#000000;">Code</a> |
-         <a download href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2025_AAAI_poster.pdf" style="color:#000000;" >Poster</a>		 
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-<!-- paper 8 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>One-Class Face Anti-spoofing via Spoof Cue Map-Guided Feature Learning</i>
-			<br>
-		    <b>Pei-Kai Huang</b>,  Cheng-Hsuan Chiang,  Tzu-Hsien Chen, Jun-Xiong Chong, Tyng-Luh Liu, Chiou-Ting Hsu<br>
-	  
-		      <span style="color: #FF0000;"> The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) </span >, 2024, Seattle WA, USA.</a>, [ 
-			CCF A,   <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) A</a> ]
-			<br>
-		  <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Huang_One-Class_Face_Anti-spoofing_via_Spoof_Cue_Map-Guided_Feature_Learning_CVPR_2024_paper.pdf" style="color:#000000;">Paper</a>  | 
-		 <a href="https://github.com/Pei-KaiHuang/CVPR24_OC_SCMNet" style="color:#000000;">Code</a> |
-		  <a href="https://www.bilibili.com/video/BV1Lw4m1Q7fK/?share_source=copy_web&vd_source=6a5816aefc89c8d16c3700c5633c43a9" style="color:#000000;">Video</a> |
-			<a download href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2024_CVPR_poster.pdf" style="color:#000000;" >Poster</a>	  
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-
- <!-- paper 7 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Test-Time Adaptation for Robust Face Anti-Spoofing</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Chen-Yu Lu,  Shu-Jung Chang, Jun-Xiong Chong, Chiou-Ting Hsu<br>
-	  
-		       <span style="color: #FF0000;"> British Machine Vision Conference (BMVC) </span >, 2023, Aberdeen, UK</a>, [ 
-			CCF C,   <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a> ]
-			<br>
-		 <a href="https://papers.bmvc2023.org/0379.pdf" style="color:#000000;">Paper</a> | 
-		 <a href="https://github.com/Pei-KaiHuang/TTA-FAS" style="color:#000000;">Code</a> | 
-		   <a href="https://www.bilibili.com/video/BV1fN4y1r7yL/?share_source=copy_web&vd_source=6a5816aefc89c8d16c3700c5633c43a9" style="color:#000000;">Video</a>  
-			| <a download href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2023_BMVC_poster.pdf" style="color:#000000;" >Poster</a>
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
-  
-
-	
- <!-- paper 6 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i> LDCformer: Incorporating Learnable Descriptive Convolution to Vision Transformer for Face Anti-Spoofing </i>
-			<br> 
-	      <b>Pei-Kai Huang</b>, Cheng-Hsuan Chiang, Jun-Xiong Chong, Tzu-Hsien Chen, Hui-Yu Ni, Chiou-Ting Hsu <br> 
-		 <span style="color: #FF0000;"> IEEE International Conference on Image Processing (ICIP) </span >, 2023, Kuala Lumpur, Malaysia</a>,
-                 [ CCF C,   <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a> ]
-			<br>
-		 <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10222330" style="color:#000000;">Paper</a> |
-		 <a href="https://github.com/Pei-KaiHuang/ICIP23_D-LDCformer" style="color:#000000;">Code</a> |
-		  <a href="https://www.bilibili.com/video/BV1Wh4y1M75d/?share_source=copy_web&vd_source=6a5816aefc89c8d16c3700c5633c43a9" style="color:#000000;">Video</a>   
-		| <a download href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2023_ICIP_poster.pdf" style="color:#000000;" >Poster</a>
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>   	
-	
-	
- <!-- paper 5 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>  Single-Domain Generalization for Semantic Segmentation via Dual-level Domain Augmentation </i>
-			<br>
-		   Shu-Jung Chang*, Chen-Yu Lu*,  <b>Pei-Kai Huang*</b>, Chiou-Ting Hsu (* equal contribution)<br> 
-	  
-		 <span style="color: #FF0000;">IEEE International Conference on Image Processing (ICIP) </span >, 2023, Kuala Lumpur, Malaysia</a>, 
-			[ CCF C,   <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a> ]
-			<br>
-		 <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10222684" style="color:#000000;">Paper</a> |
-		  <a href="https://www.bilibili.com/video/BV1Nw411U7Qv/?share_source=copy_web&vd_source=6a5816aefc89c8d16c3700c5633c43a9" style="color:#000000;">Video</a>   
-		 | Oral	  
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>   	
-	
- <!-- paper 4 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Towards Diverse Liveness Feature Representation and Domain Expansion for Cross-Domain Face Anti-Spoofing </i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Jun-Xiong Chong, Hui-Yu Ni, Tzu-Hsien Chen, Chiou-Ting Hsu<br>
-	  
-		  <span style="color: #FF0000;">  IEEE International Conference on Multimedia & Expo (ICME) </span >, 2023, Brisbane, Australia</a>, 
-			[CCF B ]
-			<br>
-		  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10220051" style="color:#000000;">Paper</a> | 
-		  <a href="https://github.com/Jxchong1999/DFANet" style="color:#000000;">Code</a> | 
-		 <a href="https://www.bilibili.com/video/BV1Y8411D7DA/?share_source=copy_web&vd_source=6a5816aefc89c8d16c3700c5633c43a9" style="color:#000000;">Video</a>  | 
-		  <a download href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2023_ICME_poster.pdf" style="color:#000000;" >Poster</a> 
-			  
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>   	
-	
-	
- 
- <!-- paper 3 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Learnable Descriptive Convolutional Network for Face Anti-Spoofing </i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Hui-Yu Ni, Yan-Qin Ni, Chiou-Ting Hsu<br>
-	  
-		       <span style="color: #FF0000;"> British Machine Vision Conference (BMVC)</span >, 2022, London, UK</a>, 
-			[CCF C,   <a href="https://numbda.cs.tsinghua.edu.cn/~yuwj/TH-CPL.pdf" style="color:#000000;">Tsinghua (清华) B</a> ]
-			<br>
-		  <a href="https://bmvc2022.mpi-inf.mpg.de/0239.pdf" style="color:#000000;">Paper</a> | 
-		  <a href="https://github.com/huiyu8794/LDCNet" style="color:#000000;">Code</a> | 
-		  <a href="https://www.bilibili.com/video/BV1Wd4y1n7rd/?share_source=copy_web&vd_source=6a5816aefc89c8d16c3700c5633c43a9" style="color:#000000;">Video</a>  |
-		  <a download href="https://github.com/Pei-KaiHuang/Pei-KaiHuang.github.io/blob/main/poster/2022_BMVC_poster.pdf" style="color:#000000;" >Poster</a> 	  
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br> 
- 
- 
- <!-- paper 2 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Learning to Augment Face Presentation Attack Dataset via Disentangled Feature Learning from Limited Spoof Data  </i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Chu-Ling Chang, Hui-Yu Ni, Chiou-Ting Hsu<br>
-	  
-		  <span style="color: #FF0000;">  IEEE International Conference on Multimedia & Expo (ICME) </span >, 2022, Taipei, Taiwan</a>, 
-			[CCF B ]
-			<br>
-		  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9859657" style="color:#000000;">Paper</a> | 
-		  <a href="https://www.bilibili.com/video/BV11M411e7YP/?share_source=copy_web&vd_source=6a5816aefc89c8d16c3700c5633c43a9" style="color:#000000;">Video</a>  
-		| Oral		  
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>    
- 
- 
- 
- 	<!-- paper 1 -->
-	<table><tbody><tr>
-	 
-	<td>
-		<div align="left">
-			<i>Face Anti-Spoofing via Robust Auxiliary Estimation and Discriminative Feature Learning</i>
-			<br>
-		    <b>Pei-Kai Huang</b>, Ming-Chieh Chin, Chiou-Ting Hsu<br>
-	  
-                   <span style="color: #FF0000;"> Asian Conference on Pattern Recognition (ACPR) </span > , 2021, Ieju Island, Korea</a>, [Indexed by EI] 
-			<br>
-		  <a href="https://link.springer.com/chapter/10.1007/978-3-031-02375-0_33" style="color:#000000;">Paper</a> | 
-		  <a href="https://www.bilibili.com/video/BV1tx4y1j7Af/?share_source=copy_web&vd_source=6a5816aefc89c8d16c3700c5633c43a9" style="color:#000000;">Video</a>  
-		| Oral		
-		</div>
-	</td>
-	</tr></tbody></table> 
- <br>
-</section>
-
-<section id="funding" class="tab-panel">
-<hr /> 
-福建省自然科学基金创青项目：复杂场景下活体生理信号驱动的人脸反欺骗研究 <b>（负责人）</b>，2026.05-2029.04, Grant:2026J008139, 8 万人民币  <br>
-福建省教育厅重点项目：恶劣天气下面向自动驾驶的自适应语义分割方法研究 <b>（排序第三）</b>，2026-04-2028.12, Grant:JZ250007, 10 万人民币 <br>
-福建师范大学计算机与网络空间学院 启动经费 <b>（负责人） </b>，2025-08-2033.08, 10 万人民币  
-</section>
-
-<section id="Academic Service" class="tab-panel"> 
-<hr /> 
-<b>Program Committee</b>: Program Co-Chair & Workshop Organizer, BD-SMDT 2026, IEEE BigData 2026
-<br> 
-<b>	CCF YOCSEF FuZhou Academic Committee (AC) Member</b>: 2026-2029
-<br> 
-<b> CCF Fuzhou Chapter Committee Member</b>: 2026-2029 
-<br> 
-	<b>The youth editorial board member</b>: Artificial Intelligence and Autonomous Systems(AIAS), 2025.09-2027.09
-<br> 
-	<br>
-<b>Conference paper reviewer</b>: CVPR26, AAAI26, ICCV25, CVPR25, BMVC25, ICME25, AAAI25, CVPR24, BMVC24, ICCV23, BMVC23, ICIP23, ICME23, ECCV22, CVPR22, BMVC22, ICME22
-<br>
-<br>  
- <b>Journal paper reviewer</b>:  Scientific Data(Nature family journal) x2, IEEE Transactions on Information Forensics & Security (TIFS) x4 , 
-International Journal of Computer Vision(IJCV) x 1, IEEE Transactions on Dependable and Secure Computing (TDSC) x1, IEEE Transactions on Instrumentation and Measurement(TIM) x2, IEEE Transactions on Biomedical Engineering (TBME) x1,  IEEE Transactions on Circuits and Systems for Video Technology (TCSVT) x2, Pattern Recognition (PR) x4, Neural Networks x1,
-Journal of Selected Topics in Applied Earth Observations and Remote Sensing (JSTARS) x1, Image and Vision Computing x1
-<br>
-</section>
-
-
-	
-<section id="Teaching" class="tab-panel">
-<hr /> 
-《人工智能与大数据》（2.5学分，本科专业选修课），课程负责人。 Artificial Intelligence and Big Data (2.5 credits, undergraduate elective course) ,Course Coordinator <br> 
-</section>
-
-<section id="Honors" class="tab-panel">
-<hr /> 
-	福建省高层次人才(引进人才, 境外C类) <br />
-	2026年福建省人工智能赋能教育教学改革项目(校级,“人工智能+”专业类课程), 人工智能与大数据 (排序第二), 2026.06. <br> 
-	福建省网络空间安全学会2025年学术年会优秀论文 一等奖 (排序第一). 2025.11  <br> 
-	IPPR 第十八屆碩博士論文佳作獎 (PS:畢業近三年内的台灣博士畢業生, 前Top 8). 2025. 08 <br> 
-	斐陶斐荣誉会员-台灣清華大學 (PS:当年度台灣清華大學博士毕业生,Top10%). 2025.08 <br> 
- 	
-</section>
- 
-
-<section id="Fun Facts" class="tab-panel">
-<hr /> 
-	我的学术谱系可追溯至卡尔·弗里德里希·高斯（Carl Friedrich Gauss），他是我的第十三代学术祖先。 <br>  
-	My academic genealogy can be traced back to Carl Friedrich Gauss, my 13th-generation academic ancestor. <br>   
-	<table class="imgtable"><tr><td>
-    <img src="picture/Gaussian.png" alt="alt text" width="250px" /></a>&nbsp;</td> 
-    <td align="center"> 
-</section>
- 
-
-	
-</div>
 <script>
-    (function () {
-        var tabs = document.querySelectorAll('.section-nav a[data-section]');
-        var panels = document.querySelectorAll('.tab-panel');
+(function () {
 
-        function showSection(id) {
-            panels.forEach(function (panel) {
-                panel.classList.toggle('active', panel.id === id);
-            });
-            tabs.forEach(function (tab) {
-                tab.classList.toggle('active', tab.getAttribute('data-section') === id);
-            });
+    var tabs = document.querySelectorAll(
+        '.section-nav a[data-section]'
+    );
+
+    var panels = document.querySelectorAll(
+        '.tab-panel'
+    );
+
+    function showSection(id) {
+
+        var targetPanel = document.getElementById(id);
+
+        if (!targetPanel || !targetPanel.classList.contains('tab-panel')) {
+            id = 'news';
         }
 
-        tabs.forEach(function (tab) {
-            tab.addEventListener('click', function (event) {
-                event.preventDefault();
-                var id = tab.getAttribute('data-section');
-                showSection(id);
-            });
+        panels.forEach(function (panel) {
+            panel.classList.toggle(
+                'active',
+                panel.id === id
+            );
         });
 
-        var initialId = window.location.hash ? window.location.hash.substring(1) : 'news';
-        if (!document.getElementById(initialId)) {
-            initialId = 'news';
-        }
-        showSection(initialId);
-    }());
+        tabs.forEach(function (tab) {
+
+            var isActive =
+                tab.getAttribute('data-section') === id;
+
+            tab.classList.toggle('active', isActive);
+
+            if (isActive) {
+                tab.setAttribute('aria-current', 'page');
+            } else {
+                tab.removeAttribute('aria-current');
+            }
+
+        });
+
+    }
+
+    /* Navigation click */
+
+    tabs.forEach(function (tab) {
+
+        tab.addEventListener('click', function (event) {
+
+            event.preventDefault();
+
+            var id = tab.getAttribute('data-section');
+
+            showSection(id);
+
+            /* Update URL without refreshing the page */
+            if (window.location.hash !== '#' + id) {
+                history.pushState(null, '', '#' + id);
+            }
+
+        });
+
+    });
+
+    /* Support direct links and browser back/forward */
+
+    function syncSectionFromHash() {
+
+        var id = window.location.hash
+            ? decodeURIComponent(window.location.hash.substring(1))
+            : 'news';
+
+        showSection(id);
+
+    }
+
+    window.addEventListener('hashchange', syncSectionFromHash);
+
+    window.addEventListener('popstate', syncSectionFromHash);
+
+    /* Initial section */
+
+    syncSectionFromHash();
+
+})();
 </script>
+
 </body>
 </html>
